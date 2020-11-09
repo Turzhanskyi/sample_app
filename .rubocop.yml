@@ -9,6 +9,10 @@ AllCops:
     - "vendor/**/*"
     - "bin/**"
 
+Metrics/BlockLength:
+  Exclude:
+    - "Guardfile"
+
 Style/Documentation:
   Enabled: false
 Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
