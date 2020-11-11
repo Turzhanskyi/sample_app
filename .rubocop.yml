@@ -13,6 +13,10 @@ Metrics/BlockLength:
   Exclude:
     - "Guardfile"
 
+Metrics/AbcSize:
+  Exclude:
+    - "app/controllers/sessions_controller.rb"
+
 Style/Documentation:
   Enabled: false
 Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
