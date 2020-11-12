@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-User.create!(name: 'Example User',
-             email: 'example@railstutorial.org',
-             password: 'foobar',
-             password_confirmation: 'foobar')
+User.create!(name: 'Test User',
+             email: 'test_user@gmail.com',
+             password: '123456',
+             password_confirmation: '123456',
+             admin: true)
 
 99.times do |n|
   name  = Faker::Name.name
