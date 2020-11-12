@@ -1,0 +1,5 @@
+Привіт, <%= @user.name %>!
+
+Ласкаво просимо в Навчальний Додаток! Перейдіть за посиланням для активації облікового запису:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
