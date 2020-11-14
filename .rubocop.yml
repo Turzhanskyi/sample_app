@@ -10,13 +10,11 @@ AllCops:
     - "bin/**"
 
 Metrics/BlockLength:
-  Exclude:
-    - "Guardfile"
-
+  Enabled: false
 Metrics/AbcSize:
-  Exclude:
-    - "app/controllers/sessions_controller.rb"
-
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
