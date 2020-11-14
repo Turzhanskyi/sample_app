@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class PasswordResetsController < ApplicationController
+  before_action :user_get,         only: %i[edit update]
+  before_action :valid_user,       only: %i[edit update]
+  before_action :check_expiration, only: %i[edit update] # Case (1)
+
   def new; end
 
   def create
@@ -17,4 +21,43 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit; end
+
+  def update
+    if params[:user][:password].empty?                  # Case (3)
+      @user.errors.add(:password, "can't be empty")
+      render 'edit'
+    elsif @user.update(user_params)                     # Case (4)
+      log_in @user
+      flash[:success] = 'Password has been reset.'
+      redirect_to @user
+    else
+      render 'edit'                                     # Case (2)
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  # Before filters
+
+  def user_get
+    @user = User.find_by(email: params[:email])
+  end
+
+  # Confirms a valid user.
+  def valid_user
+    unless @user&.activated? &&
+           @user&.authenticated?(:reset, params[:id])
+      redirect_to root_url
+    end
+  end
+
+  # Checks expiration of reset token.
+  def check_expiration
+    flash[:danger] = 'Password reset has expired.' unless @user.password_reset_expired?
+    redirect_to new_password_reset_url unless @user.password_reset_expired?
+  end
 end
