@@ -237,7 +237,10 @@ input {
     margin-top: 5px;
   }
 }
-
+/*.micropost-image img {
+max-width: 500px;
+}
+*/
 aside {
   textarea {
     height: 100px;
@@ -245,7 +248,7 @@ aside {
   }
 }
 
-span.picture {
+span.micropost-image {
   margin-top: 10px;
   input {
     border: 0;
