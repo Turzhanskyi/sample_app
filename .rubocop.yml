@@ -8,7 +8,16 @@ AllCops:
     - "node_modules/**/*"
     - "vendor/**/*"
     - "bin/**"
+  NewCops: enable
 
+Lint/DuplicateBranch: # (new in 1.3)
+  Enabled: true
+Lint/EmptyClass: # (new in 1.3)
+  Enabled: true
+Style/NilLambda: # (new in 1.3)
+  Enabled: true
+Style/RedundantArgument: # (new in 1.4)
+  Enabled: true
 Metrics/BlockLength:
   Enabled: false
 Metrics/AbcSize:
@@ -37,3 +46,11 @@ Style/NegatedIfElseCondition: # (new in 1.2)
   Enabled: true
 Style/SwapValues: # (new in 1.1)
   Enabled: true
+Style/GuardClause:
+  Enabled: false
+Style/CombinableLoops:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+Naming/PredicateName:
+  Enabled: false

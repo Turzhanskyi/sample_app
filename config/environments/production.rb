@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
+  # Store uploaded files on Amazon AWS.
   config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
@@ -68,7 +68,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = '<your heroku app>.herokuapp.com'
+  host = 'https://mysterious-atoll-47182.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
